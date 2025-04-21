@@ -9,7 +9,7 @@ Study Café is a cozy, cafe-themed web app that blends productivity and relaxati
 
 **Features & Tools:**  <br/>
 Customizable cafe themes (day, rainy, plant nook): HTML, CSS, React, CSS animations <br/>
-Embedded lofi music player: Spotify, Radio API  <br/>
+Embedded lofi music player: Radio API  <br/>
 Flashcard system with shuffle & tracking: React, backend (Node.js & MongoDB)  <br/>
 Pomodoro timer: JavaScript (setInterval), React  <br/>
 Journaling panel with autosave: React  <br/>
