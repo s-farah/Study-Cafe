@@ -1,6 +1,9 @@
 **Project Name:**  <br/>
 Study Café
 
+**Members** <br/>
+Mireya Zamora-Garcia, Amber Ramirez, Farah Shousha
+
 **Application Description:**  <br/>
 Study Café is a cozy, cafe-themed web app that blends productivity and relaxation. It is inspired by the aesthetics of lofi playlists and the focus of study tools like Quizlet and Notion. This app creates a virtual space where users can study with flashcards, play ambient music, use a Pomodoro timer, and track their progress. The app is ideal for students who enjoy visual organization and want an all-in-one space for active recall, reflection, and focusing while they work.  
 
