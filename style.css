@@ -1,0 +1,114 @@
+/* Reset */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #8aa7af;
+    color: #572f1d;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* HEADER */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efe2d1;
+    padding: 20px 40px;
+    border-bottom: 5px solid #572f1d;
+  }
+  
+  #logo {
+    font-size: 48px;
+    font-weight: bold;
+    color: #572f1d;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+  }
+  
+  nav li a {
+    text-decoration: none;
+    color: #572f1d;
+    font-size: 24px;
+    padding: 10px 15px;
+  }
+  
+  nav li a:hover {
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  /* MAIN SECTION */
+  main {
+    padding: 100px 5% 160px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 60px;
+    flex-grow: 1;
+  }
+  
+  #ambience-name {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .dropdown {
+    background-color: #572f1d;
+    color: #efe2d1;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 12px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 3px 5px 0 #5b7899;
+    margin-top: 30px;
+  }
+  
+  .ambience-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin-top: 40px;
+  }
+  
+  .ambience-icons img {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s;
+  }
+  
+  .ambience-icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  .audio-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  
+  .audio-player audio {
+    width: 400px;
+    background-color: #efe2d1;
+    border: none;
+  }
+  

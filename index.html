@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Study Café (Home)</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <script src="/script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header/Navigation Bar -->
+    <header>
+      <h1 id="logo">STUDY CAFÉ</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="flashcards.html">Flashcards</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="pomodoro.html">Pomodoro</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Ambience Selection -->
+    <main>
+      <section id="ambience">
+        <h2 id="ambience-name">Latte Lounge</h2>
+        <button class="dropdown">Select Ambience</button>
+
+        <div class="ambience-icons">
+          <img src="assets/latte.png" alt="Latte">
+          <img src="assets/beans.png" alt="Coffee Beans">
+          <img src="assets/espresso.png" alt="Espresso">
+          <img src="assets/to-go.png" alt="To-Go Cup">
+        </div>
+
+        <div class="audio-player">
+          <audio id="radio-player" controls autoplay>
+            <source src="https://stream-ssl.radionomy.com/JazzRadio" type="audio/mpeg">
+            Your browser does not support the audio element. <!-- in case it doesn't work -->
+          </audio>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
