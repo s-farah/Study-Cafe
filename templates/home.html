@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study Café</title>
+<!-- url_for is flask url helper -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+
+  <!-- close/open the login stuff -->
+  <div class="login-toggle" id="loginToggle">></div>
+
+  <!-- slides out panel -->
+  <div class="login-panel" id="loginPanel">
+
+    <!-- authentic signing up -->
+    <div id="auth-container">
+      <h3 id="login-title">Welcome</h3>
+
+      <!-- login -->
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" class="login-input" required>
+        <input type="password" name="password" placeholder="Password" class="login-input" required>
+        <button type="submit" class="login-btn">Login</button>
+        <div class="error-message" id="errorMessage"></div>
+      </form>
+
+      <!-- signup -->
+      <div id="showSignupSection" style="font-size: 14px; margin-top: 10px;">
+        Don’t have an account?
+        <button id="showSignup" class="linkish">Sign Up</button>
+      </div>
+
+      <form id="signupForm" style="display: none;">
+        <input type="text" name="newUsername" placeholder="New Username" class="login-input" required>
+        <input type="password" name="newPassword" placeholder="New Password" class="login-input" required>
+        <button type="submit" class="login-btn">Register</button>
+        <div class="error-message" id="signupMessage"></div>
+
+        <p style="font-size: 14px; margin-top: 10px;">
+          Already have an account?
+          <button id="showLogin" class="linkish">Back to Login</button>
+        </p>
+      </form>
+    </div>
+
+    <!-- loggedin -->
+    <div id="loggedInPanel" style="display: none; flex-direction: column; align-items: center;">
+      <h3 style="margin-bottom: 10px;">Hello, <span id="loggedInUser"></span>!</h3>
+      <button id="logoutBtn" class="login-btn">Logout</button>
+    </div>
+
+  </div>
+
+  <!-- window -->
+  <div class="window">
+
+    <!-- window header -->
+    <div class="window-header">
+      <div class="buttons">
+        <span class="circle red"></span>
+        <span class="circle yellow"></span>
+        <span class="circle green"></span>
+      </div>
+
+      <div class="window-title">Study Café ☕</div>
+
+      <!-- nav tabs -->
+      <div class="nav-tabs">
+        <button class="tab" onclick="showTab('home')">Home</button>
+        <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
+        <button class="tab" onclick="showTab('journal')">Journal</button>
+        <button class="tab" onclick="showTab('pomodoro')">Pomodoro</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+
+       <!-- home tab -->
+      <div class="tab-content" id="home">
+        <h2>Select Ambience</h2>
+        <div class="ambience-icons">
+          <img src="{{ url_for('static', filename='assets/latte.png') }}" alt="Latte Art" />
+          <img src="{{ url_for('static', filename='assets/beans.png') }}" alt="Coffee Beans" />
+          <img src="{{ url_for('static', filename='assets/cup.png') }}" alt="Coffee Cup" />
+        </div>
+      </div>
+
+      <!-- flashcards tab -->
+      <div class="tab-content" id="flashcards" style="display: none;">
+        <h2>Flashcards</h2>
+        <p>Review and master new concepts here!</p>
+      </div>
+
+      <!-- journal tab -->
+      <div class="tab-content" id="journal" style="display: none;">
+        <h2 class="journal-heading">Journal</h2>
+        <div class="journal-container">
+          <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+          <button class="submit-entry">Add Entry</button>
+        </div>
+
+        <div class="entries-list">
+          <h3>Favorite Entries ⭐</h3>
+          <ul id="favorite-entries"></ul>
+
+          <h3>Previous Entries</h3>
+          <ul id="entries"></ul>
+        </div>
+      </div>
+
+      <!-- pomodoro tab -->
+      <div class="tab-content" id="pomodoro" style="display: none;">
+        <h2>Pomodoro Timer</h2>
+        <button id="toggle-settings-btn" class="settings-toggle">Edit Durations</button>
+
+        <div class="pomodoro-settings" id="duration-settings">
+          <label>Work (min): <input id="work-duration" type="number" value="25" min="1" /></label>
+          <label>Break (min): <input id="break-duration" type="number" value="5" min="1" /></label>
+          <label>Long Break (min): <input id="long-break-duration" type="number" value="15" min="1" /></label>
+          <button id="set-durations-btn" class="brown-btn">Set Durations</button>
+        </div>
+
+        <div class="pomodoro-timer">
+          <h1 id="timer">25:00</h1>
+          <h3 id="session-type">Session 1</h3>
+          <div class="pomodoro-buttons">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn">Pause</button>
+            <button id="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- music footer ignoringgggg -->
+  <footer class="music-bar">
+    <audio controls>
+      <source src="{{ url_for('static', filename='assets/lofi.mp3') }}" type="audio/mp3" />
+    </audio>
+  </footer>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
