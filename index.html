@@ -2,74 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Study Café</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="window">
+    <div class="window-header">
+      <div class="buttons">
+        <span class="circle red"></span>
+        <span class="circle yellow"></span>
+        <span class="circle green"></span>
+      </div>
+      <div class="window-title">Study Café ☕</div>
 
-<div class="window">
-  <div class="window-header">
-    <div class="buttons">
-      <span class="circle red"></span>
-      <span class="circle yellow"></span>
-      <span class="circle green"></span>
+      <div class="nav-tabs">
+        <button class="tab active" onclick="showTab('home')">Home</button>
+        <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
+        <button class="tab" onclick="showTab('journal')">Journal</button>
+        <button class="tab" onclick="showTab('pomodoro')">Pomodoro</button>
+      </div>
     </div>
-    <div class="window-title">Study Café ☕</div>
 
-    <div class="nav-tabs">
-      <button class="tab active" onclick="showTab('home')">Home</button>
-      <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
-      <button class="tab" onclick="showTab('journal')">Journal</button>
-      <button class="tab" onclick="showTab('pomodoro')">Pomodoro</button>
+    <div class="window-body">
+      <div class="tab-content" id="home">
+        <h2>Select Ambience</h2>
+        <div class="ambience-icons">
+          <img src="assets/latte.png" alt="Latte Art">
+          <img src="assets/beans.png" alt="Coffee Beans">
+          <img src="assets/cup.png" alt="Coffee Cup">
+        </div>
+      </div>
+
+      <div class="tab-content" id="flashcards" style="display: none;">
+        <h2>Flashcards</h2>
+        <p>Review and master new concepts here!</p>
+      </div>
+
+      <div class="tab-content" id="journal" style="display: none;">
+        <h2>Journal</h2>
+        <div class="journal-container">
+          <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+          <button class="submit-entry">Add Entry</button>
+        </div>
+        <div class="entries-list">
+          <h3>Favorite Entries ⭐</h3>
+          <ul id="favorite-entries"></ul>
+
+          <h3>Previous Entries</h3>
+          <ul id="entries"></ul>
+        </div>
+      </div>
+
+      <div class="tab-content" id="pomodoro" style="display: none;">
+        <h2>Pomodoro Timer</h2>
+        <button id="toggle-settings-btn" class="settings-toggle">
+          Edit Durations</button>
+
+        <div class="pomodoro-settings" id="duration-settings">
+          <label>Work (min): <input id="work-duration" type="number" value="25" min="1"></label>
+          <label>Break (min): <input id="break-duration" type="number" value="5" min="1"></label>
+          <label>Long Break (min): <input id="long-break-duration" type="number" value="15" min="1"></label>
+          <button id="set-durations-btn">Set Durations</button>
+        </div>
+
+        <div class="pomodoro-timer">
+          <h1 id="timer">25:00</h1>
+          <h3 id="session-type">Session 1</h3>
+          <div class="pomodoro-buttons">
+            <button id="start-btn">Start</button>
+            <button id="pause-btn">Pause</button>
+            <button id="reset-btn">Reset</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="window-body">
-    <div class="tab-content" id="home">
-      <h2>Select Ambience</h2>
-      <div class="ambience-icons">
-        <img src="assets/latte.png" alt="Latte Art">
-        <img src="assets/beans.png" alt="Coffee Beans">
-        <img src="assets/cup.png" alt="Coffee Cup">
-      </div>
-    </div>
+  <footer class="music-bar">
+    <audio controls>
+      <source src="assets/lofi.mp3" type="audio/mp3">
+    </audio>
+  </footer>
 
-    <div class="tab-content" id="flashcards" style="display: none;">
-      <h2>Flashcards</h2>
-      <p>Review and master new concepts here!</p>
-    </div>
-
-    <div class="tab-content" id="journal" style="display:none;">
-      <h2>Journal</h2>
-    
-      <div class="journal-container">
-        <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
-        <button class="submit-entry">Add Entry</button>
-      </div>
-    
-      <div class="entries-list">
-        <h3>Favorite Entries ⭐</h3>
-        <ul id="favorite-entries"></ul>
-    
-        <h3>Previous Entries</h3>
-        <ul id="entries"></ul>
-      </div>
-    </div>    
-    
-    <div class="tab-content" id="pomodoro" style="display: none;">
-      <h2>Pomodoro Timer</h2>
-      <p>Stay productive with the Pomodoro technique!</p>
-    </div>
-  </div>
-</div>
-
-<footer class="music-bar">
-  <audio controls>
-    <source src="assets/lofi.mp3" type="audio/mp3">
-  </audio>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

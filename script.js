@@ -10,6 +10,7 @@ function showTab(tabId) {
   }
   
   document.addEventListener('DOMContentLoaded', () => {
+    // how the journal works
     const addEntryBtn = document.querySelector('.submit-entry');
     const journalTextarea = document.querySelector('.journal-textarea');
     const entriesList = document.getElementById('entries');
@@ -63,7 +64,6 @@ function showTab(tabId) {
       textP.style.textAlign = 'left';
       textP.style.fontWeight = 'normal';
   
-      // clicking star
       starBtn.onclick = () => {
         starBtn.classList.toggle('starred');
   
@@ -93,5 +93,106 @@ function showTab(tabId) {
         entriesList.prepend(li);
       }
     }
-  });
+  
+    // how pomodoro works
+    const timerDisplay = document.getElementById('timer');
+    const startBtn = document.getElementById('start-btn');
+    const pauseBtn = document.getElementById('pause-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const setDurationsBtn = document.getElementById('set-durations-btn');
+    const workInput = document.getElementById('work-duration');
+    const breakInput = document.getElementById('break-duration');
+    const longBreakInput = document.getElementById('long-break-duration');
+    const sessionType = document.getElementById('session-type');
+  
+    let timerInterval = null;
+    let isWork = true;
+    let sessionCount = 0;
+    let durations = {
+      work: 25 * 60,
+      break: 5 * 60,
+      longBreak: 15 * 60
+    };
+    let timeLeft = durations.work;
+  
+    function updateTimerDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+  
+    setDurationsBtn.addEventListener('click', () => {
+      durations.work = (parseInt(workInput.value) || 25) * 60;
+      durations.break = (parseInt(breakInput.value) || 5) * 60;
+      durations.longBreak = (parseInt(longBreakInput.value) || 15) * 60;
+      resetTimer(); // reset after the duration
+    });
+  
+    function startTimer() {
+      if (timerInterval) return; 
+  
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          sessionCount++;
+  
+          if (sessionCount % 8 === 0) {
+            timeLeft = durations.longBreak;
+            sessionType.textContent = "Long Break 🌟";
+            isWork = false;
+          } else if (isWork) {
+            timeLeft = durations.break;
+            sessionType.textContent = "Break ☕";
+            isWork = false;
+          } else {
+            timeLeft = durations.work;
+            sessionType.textContent = `Session ${Math.floor(sessionCount / 2) + 1}`;
+            isWork = true;
+          }
+  
+          updateTimerDisplay();
+          startTimer();
+        }
+      }, 1000);
+    }
+  
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  
+    function resetTimer() {
+      pauseTimer();
+      timeLeft = durations.work;
+      sessionType.textContent = "Session 1";
+      sessionCount = 0;
+      isWork = true;
+      updateTimerDisplay();
+    }
+  
+    startBtn.addEventListener('click', () => {
+      pauseTimer();
+      timeLeft = isWork ? durations.work : durations.break;
+      updateTimerDisplay();
+      startTimer();
+    });
+  
+    pauseBtn.addEventListener('click', pauseTimer);
+    resetBtn.addEventListener('click', resetTimer);
+  
+    updateTimerDisplay();
+    
+    // duration animation?
+    const toggleSettingsBtn = document.getElementById('toggle-settings-btn');
+    const durationSettings = document.getElementById('duration-settings');
+
+    toggleSettingsBtn.addEventListener('click', () => {
+    durationSettings.classList.toggle('show-settings');
+});
+
+});
   
