@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Café - Flashcards</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/cup-icon.png">
+    <script src="script.js" defer></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        AOS.init({ duration: 1000, once: true });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container" data-aos="fade-up">
+      <header>
+        <h1>Flashcards 📋</h1>
+      </header>
+
+      <section class="flashcard-area">
+        <div class="flashcard-box">
+          <p>{ Question appears here }</p>
+          <div class="flashcard-buttons">
+            <button class="flashcard-btn">Understood</button>
+            <button class="flashcard-btn">Still Learning</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer id="music-bar">
+      <audio controls>
+        <source src="assets/lofi.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </footer>
+  </body>
+</html>

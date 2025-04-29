@@ -1,50 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Study Café (Home)</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Café</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <link rel="stylesheet" href="/style.css" />
+<div class="window">
+  <div class="window-header">
+    <div class="buttons">
+      <span class="circle red"></span>
+      <span class="circle yellow"></span>
+      <span class="circle green"></span>
+    </div>
+    <div class="window-title">Study Café ☕</div>
 
-    <script src="/script.js" defer></script>
-  </head>
+    <div class="nav-tabs">
+      <button class="tab active" onclick="showTab('home')">Home</button>
+      <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
+      <button class="tab" onclick="showTab('journal')">Journal</button>
+      <button class="tab" onclick="showTab('pomodoro')">Pomodoro</button>
+    </div>
+  </div>
 
-  <body>
-    <!-- Header/Navigation Bar -->
-    <header>
-      <h1 id="logo">STUDY CAFÉ</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="flashcards.html">Flashcards</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="pomodoro.html">Pomodoro</a></li>
-        </ul>
-      </nav>
-    </header>
+  <div class="window-body">
+    <div class="tab-content" id="home">
+      <h2>Select Ambience</h2>
+      <div class="ambience-icons">
+        <img src="assets/latte.png" alt="Latte Art">
+        <img src="assets/beans.png" alt="Coffee Beans">
+        <img src="assets/cup.png" alt="Coffee Cup">
+      </div>
+    </div>
 
-    <!-- Ambience Selection -->
-    <main>
-      <section id="ambience">
-        <h2 id="ambience-name">{ambience name}</h2>
-        <button class="dropdown">Select Ambience</button>
+    <div class="tab-content" id="flashcards" style="display: none;">
+      <h2>Flashcards</h2>
+      <p>Review and master new concepts here!</p>
+    </div>
 
-        <div class="ambience-icons">
-          <img src="assets/latte.png" alt="Latte">
-          <img src="assets/beans.png" alt="Coffee Beans">
-          <img src="assets/espresso.png" alt="Espresso">
-          <img src="assets/to-go.png" alt="To-Go Cup">
-        </div>
+    <div class="tab-content" id="journal" style="display:none;">
+      <h2>Journal</h2>
+    
+      <div class="journal-container">
+        <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+        <button class="submit-entry">Add Entry</button>
+      </div>
+    
+      <div class="entries-list">
+        <h3>Favorite Entries ⭐</h3>
+        <ul id="favorite-entries"></ul>
+    
+        <h3>Previous Entries</h3>
+        <ul id="entries"></ul>
+      </div>
+    </div>    
+    
+    <div class="tab-content" id="pomodoro" style="display: none;">
+      <h2>Pomodoro Timer</h2>
+      <p>Stay productive with the Pomodoro technique!</p>
+    </div>
+  </div>
+</div>
 
-        <div class="audio-player">
-          <audio id="radio-player" controls autoplay>
-            <source src="https://stream-ssl.radionomy.com/JazzRadio" type="audio/mpeg">
-            Your browser does not support the audio element. <!-- in case it doesn't work -->
-          </audio>
-        </div>
-      </section>
-    </main>
-  </body>
+<footer class="music-bar">
+  <audio controls>
+    <source src="assets/lofi.mp3" type="audio/mp3">
+  </audio>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
