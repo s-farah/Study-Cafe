@@ -126,3 +126,17 @@ if __name__ == "__main__":
 # type pip install flask and wait (make sure you are in the folder where app.py is located)
 # type python app.py
 # open the link it gives you in the browser
+
+# for tmmrw
+# 
+# setting up the database 
+# create a sets stable that will store a study set name and user-id
+# create flashcards table with the front/back and the set 
+# 
+# backend routes 
+# GET/sets (returns list of user's study sets)
+# POST /sets (new study set created)
+# DELETE /sets (delete a study set and its card)
+# figure out indvividual flashcards adding/removing later on
+# use for the flipping animation:
+    # .flip-card:hover .flip-card-inner {transform: rotateY(180deg);}
