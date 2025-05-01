@@ -468,6 +468,70 @@ body {
 
 
 
+/* FLASHCARD SECTION */
+.flashcard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+ /*  */
+.flashcards {
+  width: 300px;
+  height: 200px;
+  position: relative; 
+  perspective: 1000px;
+}
+
+/* Flip */
+.flashcard {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped {
+  transform: rotateX(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  width: 300px;
+  height: 200px;
+  color: black;
+  font-size: 18px;
+  text-align: center;
+  background: pink;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  backface-visibility: hidden;
+}
+
+
+.flashcard-back {
+  transform: rotateX(180deg);
+}
+
+/*button */
+.flip_button {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-top: 20px;
+  background-color: #6b4636;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.flip_button:hover {
+  background-color: #bfa58d;
+}
 
 
 

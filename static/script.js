@@ -318,4 +318,17 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleSettingsBtn.addEventListener('click', () => {
     durationSettings.classList.toggle('show-settings');
   });
+
+  // Flashcards - flip
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.flip_button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const flashcardContainer = button.closest('.flashcard-container');
+        const card = flashcardContainer.querySelector('.flashcard');
+        card.classList.toggle('flipped');
+      });
+    });
+  });
+  
+
 });
