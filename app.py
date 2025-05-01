@@ -117,6 +117,55 @@ def entries():
         db.commit()
         db.close()
         return jsonify({"success": True})
+    
+# # flashcards
+# @app.route("/flashcards", methods=["GET", "POST", "DELETE"])
+# def flashcards():
+#     if "user_id" not in session:
+#         return jsonify({"error": "Not logged in"}), 403
+
+#     db = get_db()
+
+#     if request.method == "POST":
+#         question = request.form["question"]
+#         answer = request.form["answer"]
+#         cursor = db.execute(
+#             "INSERT INTO flashcards (user_id, question, answer) VALUES (?, ?, ?)",
+#             (session["user_id"], question, answer)
+#         )
+#         card_id = cursor.lastrowid
+#         db.commit()
+#         db.close()
+#         return jsonify({"success": True, "id": card_id})
+
+#     elif request.method == "GET":
+#         user_cards = db.execute(
+#             "SELECT id, question, answer FROM flashcards WHERE user_id = ? ORDER BY id DESC",
+#             (session["user_id"],)
+#         ).fetchall()
+#         db.close()
+
+#         flashcard_list = [
+#             {
+#                 "id": row["id"],
+#                 "question": row["question"],
+#                 "answer": row["answer"]
+#             }
+#             for row in user_cards
+#         ]
+#         return jsonify(flashcard_list)
+
+#     elif request.method == "DELETE":
+#         card_id = request.form["id"]
+#         db.execute(
+#             "DELETE FROM flashcards WHERE id = ? AND user_id = ?",
+#             (card_id, session["user_id"])
+#         )
+#         db.commit()
+#         db.close()
+#         return jsonify({"success": True})
+
+    
 
 # runs the app
 if __name__ == "__main__":
