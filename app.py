@@ -117,6 +117,8 @@ def entries():
         db.commit()
         db.close()
         return jsonify({"success": True})
+    
+    
 
 # runs the app
 if __name__ == "__main__":
