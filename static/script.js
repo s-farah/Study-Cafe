@@ -116,12 +116,12 @@ document.addEventListener('DOMContentLoaded', () => {
     entryButtons.className = 'entry-buttons';
 
     const starBtn = document.createElement('button');
-    starBtn.innerHTML = '⭐';
+    starBtn.innerHTML = '⭐'; //emoji from emojipedia.ord
     starBtn.className = 'star-btn';
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '❌';
-    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '❌'; // emoji from emojipedia.ord
+    deleteBtn.className = 'journal-delete-btn';
 
     const dateSpan = document.createElement('span');
     dateSpan.className = 'entry-date';
@@ -402,8 +402,8 @@ function loadFlashcards() {
       back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
       const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'X';
-      deleteBtn.className = 'delete-btn';
+      deleteBtn.textContent = '❌'; // emoji from emojipedia
+      deleteBtn.className = 'card-delete-btn';
       deleteBtn.onclick = (e) => {
         e.stopPropagation();
         flashcards = flashcards.filter(c => c.id !== card.id);

@@ -266,7 +266,7 @@ body {
   gap: 12px;
 }
 
-.star-btn, .delete-btn {
+.star-btn, .journal-delete-btn {
   background: none;
   border: none;
   font-size: 22px;
@@ -278,11 +278,11 @@ body {
   transform: scale(1.2);
 }
 
-.delete-btn {
+.journal-delete-btn {
   color: #ff6b6b;
 }
 
-.delete-btn:hover {
+.journal-delete-btn:hover {
   color: red;
   transform: scale(1.2);
 }
@@ -568,18 +568,22 @@ body {
   transform: rotateY(180deg);
 }
 
-.delete-btn {
+.card-delete-btn {
   position: absolute;
   top: 5px;
   right: 10px;
-  background: #b04343;
-  color: white;
+  background: none;
   border: none;
-  border-radius: 4px;
   padding: 3px 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 20px;
   z-index: 2;
+}
+
+
+.card-delete-btn:hover {
+  color: red;
+  transform: scale(1.2);
 }
 
 /* style modal */
