@@ -77,6 +77,57 @@
       </div>
     </div>
 
+    <!-- flashcards tab -->
+    <div class="tab-content" id="flashcards" style="display: none;">
+      <h2 class="section-title" style="text-align: center;">Flashcards</h2>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+        <button id="btn-new-flashcard">+ Add Flashcard</button>
+        <select id="setFilter">
+          <option value="all">All Sets</option>
+        </select>
+      </div>
+
+      <!-- where flashcards will appear -->
+      <div class="flashcards" id="flashcardsContainer"></div>
+    </div>
+
+    <!-- modal -->
+    <div id="flashcard-modal" class="modal-overlay" style="display: none;">
+      <div class="modal">
+        <button class="modal-close" id="close-modal">X</button>
+        <h3 style="margin-top: 0;">Add New Flashcard</h3>
+        <form id="flashcard-form">
+          <label for="fc_set">Study Set:</label>
+          <input type="text" id="fc_set" required />
+
+          <label for="fc_question">Question (Front):</label>
+          <textarea id="fc_question" rows="2" required></textarea>
+
+          <label for="fc_answer">Answer (Back):</label>
+          <textarea id="fc_answer" rows="2" required></textarea>
+
+          <button type="submit" style="margin-top: 10px;">Save Flashcard</button>
+        </form>
+      </div>
+    </div>
+
+     <!-- journal tabs -->
+      <div class="tab-content" id="journal" style="display: none;">
+        <h2 class="journal-heading">Journal</h2>
+        <div class="journal-container">
+          <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
+          <button class="submit-entry">Add Entry</button>
+        </div>
+        <div class="entries-list">
+          <h3>Favorite Entries ⭐</h3>
+          <ul id="favorite-entries"></ul>
+          <h3>Previous Entries</h3>
+          <ul id="entries"></ul>
+        </div>
+      </div>
+
+
     <div class="window-body">
 
        <!-- home tab -->
@@ -100,43 +151,6 @@
             <button class="ambience-choice" data-gif="ambience3.gif">Forest Cafe</button>
             <button class="ambience-choice" data-gif="ambience4.gif">Day Cafe</button>
           </div>
-        </div>
-      </div>
-      
-      <!-- flashcards tab -->
-      <div class="tab-content" id="flashcards" style="display: none;">
-        <h2>Flashcards</h2>
-             <!-- Flashcard -->
-             <div class="flashcard-container">
-              <div class="flashcards">
-                <div class="flashcard">
-                  <div class="flashcard-front">
-                    <p>Review and master new concepts here!</p>
-                  </div>
-                  <div class="flashcard-back">
-                    <p>ANSWER</p>
-                  </div>
-                </div>
-              </div>
-              <button class="flip_button">Flip Card</button>
-            </div>
-          </div>
-        </div>
-
-      <!-- journal tab -->
-      <div class="tab-content" id="journal" style="display: none;">
-        <h2 class="journal-heading">Journal</h2>
-        <div class="journal-container">
-          <textarea class="journal-textarea" placeholder="Write your thoughts here..."></textarea>
-          <button class="submit-entry">Add Entry</button>
-        </div>
-
-        <div class="entries-list">
-          <h3>Favorite Entries ⭐</h3>
-          <ul id="favorite-entries"></ul>
-
-          <h3>Previous Entries</h3>
-          <ul id="entries"></ul>
         </div>
       </div>
 

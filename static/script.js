@@ -319,16 +319,126 @@ document.addEventListener('DOMContentLoaded', () => {
     durationSettings.classList.toggle('show-settings');
   });
 
-  // Flashcards - flip
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.flip_button').forEach((button) => {
-      button.addEventListener('click', () => {
-        const flashcardContainer = button.closest('.flashcard-container');
-        const card = flashcardContainer.querySelector('.flashcard');
-        card.classList.toggle('flipped');
+// flashcards!!
+let flashcards = JSON.parse(localStorage.getItem("flashcards") || "[]");
+
+const flashcardsContainer = document.getElementById('flashcardsContainer');
+const flashcardModal = document.getElementById('flashcard-modal');
+const flashcardForm = document.getElementById('flashcard-form');
+const setFilter = document.getElementById('setFilter');
+
+const newBtn = document.getElementById('btn-new-flashcard');
+const closeBtn = document.getElementById('close-modal');
+const inputSet = document.getElementById('fc_set');
+const inputQ = document.getElementById('fc_question');
+const inputA = document.getElementById('fc_answer');
+
+// open modal
+newBtn.addEventListener('click', () => {
+  flashcardModal.style.display = 'flex';
+  flashcardForm.reset();
+});
+
+// close modal
+closeBtn.addEventListener('click', () => {
+  flashcardModal.style.display = 'none';
+});
+
+// save card
+flashcardForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const card = {
+    id: Date.now(),
+    set: inputSet.value.trim(),
+    question: inputQ.value.trim(),
+    answer: inputA.value.trim()
+  };
+
+  if (!card.set || !card.question || !card.answer) return;
+  flashcards.push(card);
+  localStorage.setItem('flashcards', JSON.stringify(flashcards));
+
+  flashcardModal.style.display = 'none';
+  loadFlashcards();
+  updateFilterOptions();
+});
+
+// filter dropdown
+setFilter.addEventListener('change', () => {
+  loadFlashcards();
+});
+
+
+function loadFlashcards() {
+  flashcardsContainer.innerHTML = '';
+  const selectedSet = setFilter.value;
+  const groups = {};
+
+  flashcards.forEach(card => {
+    if (selectedSet !== 'all' && card.set !== selectedSet) return;
+    if (!groups[card.set]) groups[card.set] = [];
+    groups[card.set].push(card);
+  });
+
+  Object.keys(groups).forEach(setName => {
+    const heading = document.createElement('h3');
+    heading.textContent = setName;
+    flashcardsContainer.appendChild(heading);
+
+    groups[setName].forEach(card => {
+      const cardEl = document.createElement('div');
+      cardEl.className = 'card';
+      cardEl.dataset.id = card.id;
+
+      const inner = document.createElement('div');
+      inner.className = 'card-inner';
+
+      const front = document.createElement('div');
+      front.className = 'card-front';
+      front.innerHTML = `<strong>Q:</strong><br>${card.question}`;
+
+      const back = document.createElement('div');
+      back.className = 'card-back';
+      back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'X';
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.onclick = (e) => {
+        e.stopPropagation();
+        flashcards = flashcards.filter(c => c.id !== card.id);
+        localStorage.setItem('flashcards', JSON.stringify(flashcards));
+        loadFlashcards();
+        updateFilterOptions();
+      };
+
+      inner.appendChild(front);
+      inner.appendChild(back);
+      cardEl.appendChild(inner);
+      cardEl.appendChild(deleteBtn);
+
+      cardEl.addEventListener('click', () => {
+        inner.classList.toggle('flipped');
       });
+
+      flashcardsContainer.appendChild(cardEl);
     });
   });
-  
+}
+
+// dropdown
+function updateFilterOptions() {
+  const sets = [...new Set(flashcards.map(c => c.set))];
+  setFilter.innerHTML = '<option value="all">All Sets</option>';
+  sets.forEach(set => {
+    const opt = document.createElement('option');
+    opt.value = set;
+    opt.textContent = set;
+    setFilter.appendChild(opt);
+  });
+}
+
+loadFlashcards();
+updateFilterOptions();
 
 });
