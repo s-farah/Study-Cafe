@@ -80,15 +80,29 @@
     <div class="window-body">
 
        <!-- home tab -->
-      <div class="tab-content" id="home">
-        <h2>Select Ambience</h2>
-        <div class="ambience-icons">
-          <img src="{{ url_for('static', filename='assets/latte.png') }}" alt="Latte Art" />
-          <img src="{{ url_for('static', filename='assets/beans.png') }}" alt="Coffee Beans" />
-          <img src="{{ url_for('static', filename='assets/cup.png') }}" alt="Coffee Cup" />
+       <div class="tab-content home-tab" id="home">
+        <h1 class="home-heading">Welcome to the Study Café</h1>
+      
+        <div class="coffee-bar">
+          <!-- images in the coffe bar, must replace w/ transparent images in the assets folder -->
+          <img src="{{ url_for('static', filename='assets/img1.png') }}" alt="img1" />
+          <img src="{{ url_for('static', filename='assets/img2.png2') }}" alt="img2" />
+          <img src="{{ url_for('static', filename='assets/img3.png') }}" alt="img3" />
+          <img src="{{ url_for('static', filename='assets/img4.pngg') }}" alt="img4" />
+        </div>        
+      
+        <div class="ambience-section">
+          <h2>Select an Ambience</h2>
+          <div class="ambience-buttons">
+            <!-- replace w/ gifs in the assets folder-->
+            <button class="ambience-choice" data-gif="ambience1.gif">Rainy Cafe</button>
+            <button class="ambience-choice" data-gif="ambience2.gif">Night Cafe</button>
+            <button class="ambience-choice" data-gif="ambience3.gif">Forest Cafe</button>
+            <button class="ambience-choice" data-gif="ambience4.gif">Day Cafe</button>
+          </div>
         </div>
       </div>
-
+      
       <!-- flashcards tab -->
       <div class="tab-content" id="flashcards" style="display: none;">
         <h2>Flashcards</h2>

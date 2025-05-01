@@ -64,6 +64,76 @@ body {
   margin-left: 20px;
 }
 
+/* everything home ambience */
+.home-tab {
+  flex-grow: 1;
+  justify-content: space-between;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.home-heading {
+  font-size: 48px;
+  color: #4a3225;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.coffee-bar {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.coffee-bar img {
+  width: 130px; 
+  height: auto;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+
+.coffee-bar img:hover {
+  transform: scale(1.05);
+}
+
+.ambience-section {
+  text-align: center;
+  margin-top: auto;
+}
+
+.ambience-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.ambience-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.ambience-choice {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4a3225;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.ambience-choice:hover {
+  background-color: #6b4636;
+  transform: scale(1.07);
+}
+
 /* nav tabs */
 .nav-tabs {
   display: flex;
@@ -114,24 +184,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* home images? */
-.ambience-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.ambience-icons img {
-  width: 90px;
-  height: auto;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-
-.ambience-icons img:hover {
-  transform: scale(1.1);
 }
 
 /* JOURNAL!!!*/
