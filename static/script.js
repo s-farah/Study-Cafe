@@ -495,3 +495,69 @@ loadFlashcards();
 updateFilterOptions();
 
 });
+
+//ambience  
+const buttons = document.querySelectorAll('.ambience-choice');
+const homeTab = document.querySelector('.home-tab');
+const ambienceContainer = document.getElementById('ambience-container');
+const themeLink = document.getElementById('themeStylesheet');
+const welcomeHeading = document.getElementById('welcome-heading');
+
+function applyAmbience(theme, gifUrl, musicUrl) {
+  themeLink.href = `/static/css/${theme}.css`;
+
+  // hide other home content
+  homeTab.querySelectorAll('*').forEach(child => {
+    if (!child.classList.contains('home-heading') && child.id !== 'ambience-container') {
+      child.style.display = 'none';
+    }
+  });
+  if (welcomeHeading) welcomeHeading.style.display = 'none';
+
+  //  ambience elements
+  ambienceContainer.innerHTML = `
+    <div class="ambience-overlay" style="background-image: url(${gifUrl})"></div>
+    <div class="music-bar">
+      <audio controls autoplay loop>
+        <source src="${musicUrl}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div class="go-back-container" style="position: absolute; bottom: 20px; left: 20px;">
+      <button class="go-back-btn">← Go Back</button>
+    </div>
+  `;
+  ambienceContainer.style.display = 'block';
+
+  // save ambience to localStorage
+  localStorage.setItem('theme', theme);
+  localStorage.setItem('gif', gifUrl);
+  localStorage.setItem('music', musicUrl);
+
+  //  go Back button to reset everything
+  ambienceContainer.querySelector('.go-back-btn').addEventListener('click', () => {
+    localStorage.removeItem('theme');
+    localStorage.removeItem('gif');
+    localStorage.removeItem('music');
+    location.reload(); // reloads full page
+  });
+}
+
+// ambience button clicks
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const theme = button.getAttribute('data-theme').toLowerCase();
+    const gifUrl = button.getAttribute('data-gif');
+    const musicUrl = button.getAttribute('data-music');
+    applyAmbience(theme, gifUrl, musicUrl);
+  });
+});
+
+// ambience  reload
+const savedTheme = localStorage.getItem('theme');
+const savedGif = localStorage.getItem('gif');
+const savedMusic = localStorage.getItem('music');
+
+if (savedTheme && savedGif && savedMusic) {
+  applyAmbience(savedTheme, savedGif, savedMusic);
+}
