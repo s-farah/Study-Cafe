@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Study Café</title>
 <!-- url_for is flask url helper -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -56,27 +57,41 @@
   </div>
 
   <!-- window -->
-  <div class="window">
-
-    <!-- window header -->
-    <div class="window-header">
-      <div class="buttons">
-        <span class="circle red"></span>
-        <span class="circle yellow"></span>
-        <span class="circle green"></span>
-      </div>
-
-      <div class="window-title">Study Café ☕</div> <!-- emoji from emojipedia.ord -->
-
-      <!-- nav tabs -->
+  <div class="window-wrapper">
+    <div class="tab-strip">
+      <div class="title-tab">Study Café ☕</div>
       <div class="nav-tabs">
-        <button class="tab" onclick="showTab('home')">Home</button>
+        <button class="tab active" onclick="showTab('home')">Home</button>
         <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
         <button class="tab" onclick="showTab('journal')">Journal</button>
         <button class="tab" onclick="showTab('pomodoro')">Pomodoro</button>
       </div>
     </div>
 
+    <div class="window">
+      <div class="window-body">
+
+        <!-- home tab -->
+        <div class="tab-content home-tab" id="home">
+          <h1 class="home-heading">Welcome to the Study Café</h1>
+          <div class="coffee-bar">
+            <img src="{{ url_for('static', filename='assets/img1.png') }}" alt="img1" />
+            <img src="{{ url_for('static', filename='assets/img2.png') }}" alt="img2" />
+            <img src="{{ url_for('static', filename='assets/img3.png') }}" alt="img3" />
+            <img src="{{ url_for('static', filename='assets/img4.png') }}" alt="img4" />
+          </div>
+          <div class="ambience-section">
+            <h2>Select an Ambience</h2>
+            <div class="ambience-buttons">
+              <button class="ambience-choice" data-gif="ambience1.gif">Rainy Cafe</button>
+              <button class="ambience-choice" data-gif="ambience2.gif">Night Cafe</button>
+              <button class="ambience-choice" data-gif="ambience3.gif">Forest Cafe</button>
+              <button class="ambience-choice" data-gif="ambience4.gif">Day Cafe</button>
+            </div>
+          </div>
+        </div>
+
+    
     <!-- flashcards tab -->
     <div class="tab-content" id="flashcards" style="display: none;">
       <h2 class="section-title" style="text-align: center;">Flashcards</h2>
@@ -124,33 +139,6 @@
           <ul id="favorite-entries"></ul>
           <h3>Previous Entries</h3>
           <ul id="entries"></ul>
-        </div>
-      </div>
-
-
-    <div class="window-body">
-
-       <!-- home tab -->
-       <div class="tab-content home-tab" id="home">
-        <h1 class="home-heading">Welcome to the Study Café</h1>
-      
-        <div class="coffee-bar">
-          <!-- images in the coffe bar, must replace w/ transparent images in the assets folder -->
-          <img src="{{ url_for('static', filename='assets/img1.png') }}" alt="img1" />
-          <img src="{{ url_for('static', filename='assets/img2.png2') }}" alt="img2" />
-          <img src="{{ url_for('static', filename='assets/img3.png') }}" alt="img3" />
-          <img src="{{ url_for('static', filename='assets/img4.pngg') }}" alt="img4" />
-        </div>        
-      
-        <div class="ambience-section">
-          <h2>Select an Ambience</h2>
-          <div class="ambience-buttons">
-            <!-- replace w/ gifs in the assets folder-->
-            <button class="ambience-choice" data-gif="ambience1.gif">Rainy Cafe</button>
-            <button class="ambience-choice" data-gif="ambience2.gif">Night Cafe</button>
-            <button class="ambience-choice" data-gif="ambience3.gif">Forest Cafe</button>
-            <button class="ambience-choice" data-gif="ambience4.gif">Day Cafe</button>
-          </div>
         </div>
       </div>
 
