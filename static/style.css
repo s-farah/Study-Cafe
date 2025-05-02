@@ -641,8 +641,51 @@ body {
   cursor: pointer;
 }
 
+#btn-new-flashcard {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a3225;
+  cursor: pointer;
+  background-color: white;
 
+}
 
+#btn-new-flashcard:hover {
+  background: #ddd;
+  transform: scale(1.03);
+}
+
+#setFilter {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a3225;
+  cursor: pointer;
+}
+
+#setFilter:hover {
+  background: #f2f2f2;
+  transform: scale(1.03);
+}
+
+#btn-next-flashcard {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a3225;
+  cursor: pointer;
+  background-color: white;
+}
 
 /* titles */
 .section-title {

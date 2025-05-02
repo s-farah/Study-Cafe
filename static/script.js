@@ -438,6 +438,7 @@ function updateFilterOptions() {
   });
 }
 
+
 loadFlashcards();
 updateFilterOptions();
 
