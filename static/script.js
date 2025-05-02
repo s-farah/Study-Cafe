@@ -328,10 +328,12 @@ const flashcardForm = document.getElementById('flashcard-form');
 const setFilter = document.getElementById('setFilter');
 
 const newBtn = document.getElementById('btn-new-flashcard');
+const nextBtn = document.getElementById('btn-next-flashcard');
 const closeBtn = document.getElementById('close-modal');
 const inputSet = document.getElementById('fc_set');
 const inputQ = document.getElementById('fc_question');
 const inputA = document.getElementById('fc_answer');
+
 
 // open modal
 newBtn.addEventListener('click', () => {
@@ -437,6 +439,55 @@ function updateFilterOptions() {
     setFilter.appendChild(opt);
   });
 }
+
+//next button
+let currentCardIndex = 0;
+
+// only cards from the selected set
+function getFilteredCards() {
+  const selectedSet = setFilter.value;
+  return flashcards.filter(card => selectedSet === 'all' || card.set === selectedSet);
+}
+
+// show one card
+function SingleCard(card) {
+  flashcardsContainer.innerHTML = '';
+  const cardEl = document.createElement('div');
+  cardEl.className = 'card';
+
+  const inner = document.createElement('div');
+  inner.className = 'card-inner';
+
+  const front = document.createElement('div');
+  front.className = 'card-front';
+  front.innerHTML = `<strong>Q:</strong><br>${card.question}`;
+
+  const back = document.createElement('div');
+  back.className = 'card-back';
+  back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
+
+  inner.appendChild(front);
+  inner.appendChild(back);
+  cardEl.appendChild(inner);
+
+  cardEl.addEventListener('click', () => {
+    inner.classList.toggle('flipped');
+  });
+
+  flashcardsContainer.appendChild(cardEl);
+}
+
+
+// ***
+nextBtn.addEventListener('click', () => {
+  const cards = getFilteredCards();
+  if (cards.length === 0) return;
+
+  currentCardIndex = (currentCardIndex + 1) % cards.length;
+  SingleCard(cards[currentCardIndex]);
+});
+
+
 
 
 loadFlashcards();
