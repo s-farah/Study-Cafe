@@ -443,3 +443,67 @@ loadFlashcards();
 updateFilterOptions();
 
 });
+
+//ambience 
+const buttons = document.querySelectorAll('.ambience-choice');
+const homeTab = document.querySelector('.home-tab');
+const ambienceContainer = document.getElementById('ambience-container');
+const themeLink = document.getElementById('themeStylesheet');
+
+buttons.forEach(button => {
+  button.addEventListener('click', function () {
+    const theme = button.getAttribute('data-theme').toLowerCase();
+    const gifUrl = button.getAttribute('data-gif');
+    const musicUrl = button.getAttribute('data-music');
+
+    themeLink.href = `/static/css/${theme}.css`;
+
+    [...homeTab.children].forEach(child => {
+      if (!child.classList.contains('home-heading') && child !== ambienceContainer) {
+        child.style.display = 'none';
+      }
+    });
+
+    ambienceContainer.innerHTML = `
+    <img src="${gifUrl}" alt="${theme} gif" style="width: 70%; border-radius: 16px; margin-bottom: 20px;" />
+    <div class="music-bar">
+      <audio controls autoplay loop>
+        <source src="${musicUrl}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  `;
+});
+});
+
+const savedTheme = localStorage.getItem('theme');
+const savedGif = localStorage.getItem('gif');
+const savedMusic = localStorage.getItem('music');
+
+if (savedTheme) {
+ 
+  themeLink.href = `/static/css/${savedTheme}.css`;
+
+
+  const ambienceContainer = document.getElementById('ambience-container');
+  ambienceContainer.innerHTML = `
+    <img src="${savedGif}" alt="${savedTheme} gif" style="width: 70%; border-radius: 16px; margin-bottom: 20px;" />
+    <div class="music-bar">
+      <audio controls autoplay loop>
+        <source src="${savedMusic}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  `;
+
+  const homeTab = document.querySelector('.home-tab');
+    [...homeTab.children].forEach(child => {
+      if (!child.classList.contains('home-heading') && child !== ambienceContainer) {
+        child.style.display = 'none';
+      }
+    });
+  }
+
+ 
+
+

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Study Café</title>
 <!-- url_for is flask url helper -->
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+<link id="themeStylesheet" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
+ 
   <!-- close/open the login stuff -->
   <div class="login-toggle" id="loginToggle">></div>
 
@@ -61,6 +61,7 @@
     <div class="tab-strip">
       <div class="title-tab">Study Café ☕</div>
       <div class="nav-tabs">
+        
         <button class="tab active" onclick="showTab('home')">Home</button>
         <button class="tab" onclick="showTab('flashcards')">Flashcards</button>
         <button class="tab" onclick="showTab('journal')">Journal</button>
@@ -74,21 +75,47 @@
         <!-- home tab -->
         <div class="tab-content home-tab" id="home">
           <h1 class="home-heading">Welcome to the Study Café</h1>
+          <div id="ambience-container" class="ambience-section"></div>
+
           <div class="coffee-bar">
             <img src="{{ url_for('static', filename='assets/img1.png') }}" alt="img1" />
             <img src="{{ url_for('static', filename='assets/img2.png') }}" alt="img2" />
             <img src="{{ url_for('static', filename='assets/img3.png') }}" alt="img3" />
             <img src="{{ url_for('static', filename='assets/img4.png') }}" alt="img4" />
           </div>
+
           <div class="ambience-section">
             <h2>Select an Ambience</h2>
             <div class="ambience-buttons">
-              <button class="ambience-choice" data-gif="ambience1.gif">Rainy Cafe</button>
-              <button class="ambience-choice" data-gif="ambience2.gif">Night Cafe</button>
-              <button class="ambience-choice" data-gif="ambience3.gif">Forest Cafe</button>
-              <button class="ambience-choice" data-gif="ambience4.gif">Day Cafe</button>
+              <button class="ambience-choice" 
+                      data-theme="Night"
+                      data-gif="{{ url_for('static', filename='assets/night.gif') }}"
+                      data-music="{{ url_for('static', filename='assets/night.mp3') }}">
+                      Night Cafe</button>
+
+
+              <button class="ambience-choice" 
+                      data-theme="Rainy"
+                      data-gif="{{ url_for('static', filename='assets/rainy.gif') }}"
+                      data-music="{{ url_for('static', filename='assets/rainy.mp3') }}">
+                      Rainy Cafe</button>
+
+
+              <button class="ambience-choice" 
+                      data-theme="Forest"
+                      data-gif="{{ url_for('static', filename='assets/forest.gif') }}"
+                      data-music="{{ url_for('static', filename='assets/forest.mp3') }}">
+                      Forest Cafe</button>
+
+
+              <button class="ambience-choice" 
+                      data-theme="Day"
+                      data-gif="{{ url_for('static', filename='assets/day.gif') }}"
+                      data-music="{{ url_for('static', filename='assets/day.mp3') }}">
+                      Day Cafe</button>
             </div>
           </div>
+          <div id="ambience-container"></div>
         </div>
 
     
