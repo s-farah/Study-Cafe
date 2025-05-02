@@ -466,6 +466,7 @@ function SingleCard(card) {
   back.className = 'card-back';
   back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
+
   inner.appendChild(front);
   inner.appendChild(back);
   cardEl.appendChild(inner);
