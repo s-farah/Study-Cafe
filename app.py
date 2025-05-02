@@ -161,5 +161,6 @@ if __name__ == "__main__":
 
 # to open the cafe:
 # type pip install flask and wait (make sure you are in the folder where app.py is located)
+# type update_db.py
 # type python app.py
 # open the link it gives you in the browser
