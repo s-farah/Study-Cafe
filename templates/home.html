@@ -74,9 +74,12 @@
 
         <!-- home tab -->
         <div class="tab-content home-tab" id="home">
-          <h1 class="home-heading">Welcome to the Study Café</h1>
+          <h1 id="welcome-heading" class="home-heading">Welcome to the Study Café</h1>
           <div id="ambience-container" class="ambience-section"></div>
-
+          <div id="go-back-container" style="display: none; text-align: center; margin-top: 20px;">
+            <button id="go-back-btn" class="ambience-choice">← Go Back</button>
+          </div>
+          
           <div class="coffee-bar">
             <img src="{{ url_for('static', filename='assets/img1.png') }}" alt="img1" />
             <img src="{{ url_for('static', filename='assets/img2.png') }}" alt="img2" />

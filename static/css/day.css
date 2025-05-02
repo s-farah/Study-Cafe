@@ -7,6 +7,8 @@
   body {
     font-family: 'VT323', monospace;
     background: #82B2E8;
+    overflow: hidden;
+    overflow-y: auto;
     background-image: url('data:image/svg+xml,<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%23e9cfc7"/></svg>');
     display: flex;
     justify-content: center;
@@ -18,10 +20,10 @@
   
   
   /* window container */
-  .window {
-    width: 1000px;
+  .window { 
+    width: 1100px;
     height: 600px;
-    background: #F4E8D4;
+    background: #F4E8D4; 
     border: 2px solid #e4cfc5;
     border-radius: 16px;
     box-shadow: 6px 6px 0 #d4a79b;
@@ -29,6 +31,7 @@
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    margin-top: 20px; 
   }
   
   .window-header {
@@ -37,7 +40,50 @@
     padding: 0;
   }
   
-  /* everything home ambience */
+  /* everything home ambience */ 
+  .go-back-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    z-index: 3;
+    position: relative;
+  }
+  
+  .go-back-btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    background-color: #4a3225;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .go-back-btn:hover {
+    background-color: #6b4636;
+  }
+  
+  .ambience-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .ambience-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-grow: 1;
+  }
+  
   .home-tab {
     flex-grow: 1;
     justify-content: space-between;
@@ -149,23 +195,24 @@
   } 
   
   .tab-strip {
-    position: absolute;
-    top: -52px;
+    position: fixed;
+    top: 90px;
     left: 0;
     width: 100%;
+    padding: 0 240px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 20px;
-    z-index: 10;
+    background-color: inherit; 
+    z-index: 100;
   }
   
-  .window-wrapper {
+  .window-wrapper { 
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    width: 1000px;
-    position: relative;
+    align-items: center;
+    width: 100%;
   }
    
   
