@@ -526,6 +526,7 @@ body {
   perspective: 1000px;
   margin: 0 auto;
   position: absolute; /* on top of eachother*/
+
 }
 
 .card-inner {
@@ -547,7 +548,7 @@ body {
   height: 100%;
   background: #f0c2aa;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(47, 46, 46, 0.1);
   backface-visibility: hidden;
   display: flex;
   justify-content: center;
