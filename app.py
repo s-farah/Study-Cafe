@@ -117,8 +117,43 @@ def entries():
         db.commit()
         db.close()
         return jsonify({"success": True})
-    
-    
+
+@app.route("/flashcards", methods=["GET", "POST", "DELETE"])
+def flashcards():
+    if "user_id" not in session:
+        return jsonify({"error": "Not logged in"}), 403
+
+    db = get_db()
+
+    if request.method == "POST":
+        set_name = request.form["set"]
+        question = request.form["question"]
+        answer = request.form["answer"]
+
+        db.execute("INSERT INTO flashcards (user_id, set_name, question, answer) VALUES (?, ?, ?, ?)",
+                   (session["user_id"], set_name, question, answer))
+        db.commit()
+        db.close()
+        return jsonify({"success": True})
+
+    elif request.method == "GET":
+        rows = db.execute("SELECT id, set_name, question, answer FROM flashcards WHERE user_id = ? ORDER BY id DESC",
+                          (session["user_id"],)).fetchall()
+        db.close()
+
+        return jsonify([{
+            "id": row["id"],
+            "set": row["set_name"],
+            "question": row["question"],
+            "answer": row["answer"]
+        } for row in rows])
+
+    elif request.method == "DELETE":
+        card_id = request.form["id"]
+        db.execute("DELETE FROM flashcards WHERE id = ? AND user_id = ?", (card_id, session["user_id"]))
+        db.commit()
+        db.close()
+        return jsonify({"success": True})
 
 # runs the app
 if __name__ == "__main__":
@@ -126,5 +161,6 @@ if __name__ == "__main__":
 
 # to open the cafe:
 # type pip install flask and wait (make sure you are in the folder where app.py is located)
+# type update_db.py
 # type python app.py
 # open the link it gives you in the browser

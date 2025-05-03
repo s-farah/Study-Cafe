@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       authContainer.style.display = 'none';
       loggedInPanel.style.display = 'flex';
       loadEntries();
+      loadFlashcards();
     } else {
       errorMessage.textContent = 'Invalid username or password.';
     }
@@ -320,8 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 // flashcards!!
-let flashcards = JSON.parse(localStorage.getItem("flashcards") || "[]");
-
 const flashcardsContainer = document.getElementById('flashcardsContainer');
 const flashcardModal = document.getElementById('flashcard-modal');
 const flashcardForm = document.getElementById('flashcard-form');
@@ -334,51 +333,61 @@ const inputSet = document.getElementById('fc_set');
 const inputQ = document.getElementById('fc_question');
 const inputA = document.getElementById('fc_answer');
 
+let flashcards = [];
+let currentCardIndex = 0;
 
-// open modal
 newBtn.addEventListener('click', () => {
   flashcardModal.style.display = 'flex';
   flashcardForm.reset();
 });
 
-// close modal
 closeBtn.addEventListener('click', () => {
   flashcardModal.style.display = 'none';
 });
 
-// save card
-flashcardForm.addEventListener('submit', (e) => {
+// Save to backend
+flashcardForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const card = {
-    id: Date.now(),
     set: inputSet.value.trim(),
     question: inputQ.value.trim(),
     answer: inputA.value.trim()
   };
 
   if (!card.set || !card.question || !card.answer) return;
-  flashcards.push(card);
-  localStorage.setItem('flashcards', JSON.stringify(flashcards));
 
-  flashcardModal.style.display = 'none';
-  loadFlashcards();
-  updateFilterOptions();
+  const response = await fetch('/flashcards', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(card)
+  });
+
+  if (response.ok) {
+    flashcardModal.style.display = 'none';
+    await loadFlashcards();
+    updateFilterOptions();
+  }
 });
 
-// filter dropdown
-setFilter.addEventListener('change', () => {
-  loadFlashcards();
-});
+setFilter.addEventListener('change', loadFlashcards);
 
+<<<<<<< HEAD
 function loadFlashcards() {
+=======
+async function loadFlashcards() {
+  const response = await fetch('/flashcards');
+  if (!response.ok) return;
+  flashcards = await response.json();
+
+>>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
   flashcardsContainer.innerHTML = '';
   const selectedSet = setFilter.value;
   const groups = {};
 
   flashcards.forEach(card => {
-    if (selectedSet !== 'all' && card.set !== selectedSet) return;
-    if (!groups[card.set]) groups[card.set] = [];
-    groups[card.set].push(card);
+    if (selectedSet !== 'all' && card.set_name !== selectedSet) return;
+    if (!groups[card.set_name]) groups[card.set_name] = [];
+    groups[card.set_name].push(card);
   });
 
   // cycling through
@@ -404,14 +413,23 @@ function loadFlashcards() {
       back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
       const deleteBtn = document.createElement('button');
+<<<<<<< HEAD
       deleteBtn.textContent = '❌'; 
       deleteBtn.className = 'card-delete-btn';
 
       deleteBtn.onclick = (e) => {
+=======
+      deleteBtn.textContent = '❌';
+      deleteBtn.className = 'card-delete-btn';
+      deleteBtn.onclick = async (e) => {
+>>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
         e.stopPropagation();
-        flashcards = flashcards.filter(c => c.id !== card.id);
-        localStorage.setItem('flashcards', JSON.stringify(flashcards));
-        loadFlashcards();
+        await fetch('/flashcards', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ id: card.id })
+        });
+        await loadFlashcards();
         updateFilterOptions();
       };
 
@@ -429,9 +447,8 @@ function loadFlashcards() {
   });
 }
 
-// dropdown
 function updateFilterOptions() {
-  const sets = [...new Set(flashcards.map(c => c.set))];
+  const sets = [...new Set(flashcards.map(c => c.set_name))];
   setFilter.innerHTML = '<option value="all">All Sets</option>';
   sets.forEach(set => {
     const opt = document.createElement('option');
@@ -441,16 +458,11 @@ function updateFilterOptions() {
   });
 }
 
-//next button
-let currentCardIndex = 0;
-
-// only cards from the selected set
 function getFilteredCards() {
   const selectedSet = setFilter.value;
-  return flashcards.filter(card => selectedSet === 'all' || card.set === selectedSet);
+  return flashcards.filter(card => selectedSet === 'all' || card.set_name === selectedSet);
 }
 
-// show one card
 function SingleCard(card) {
   flashcardsContainer.innerHTML = '';
   const cardEl = document.createElement('div');
@@ -467,8 +479,11 @@ function SingleCard(card) {
   back.className = 'card-back';
   back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
   inner.appendChild(front);
   inner.appendChild(back);
   cardEl.appendChild(inner);
@@ -480,16 +495,14 @@ function SingleCard(card) {
   flashcardsContainer.appendChild(cardEl);
 }
 
-
-// ***
 nextBtn.addEventListener('click', () => {
   const cards = getFilteredCards();
   if (cards.length === 0) return;
-
   currentCardIndex = (currentCardIndex + 1) % cards.length;
   SingleCard(cards[currentCardIndex]);
 });
 
+<<<<<<< HEAD
 // fixed my issues about the first card (yayayay)
 const cards = getFilteredCards();
 if (cards.length > 0) {
@@ -497,8 +510,11 @@ if (cards.length > 0) {
   SingleCard(cards[currentCardIndex]);
 }
 updateFilterOptions();
+=======
+loadFlashcards();
+>>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
 
-});
+}); 
 
 //ambience  
 const buttons = document.querySelectorAll('.ambience-choice');
