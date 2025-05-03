@@ -507,6 +507,7 @@ function applyAmbience(theme, gifUrl, musicUrl) {
   });
   if (welcomeHeading) welcomeHeading.style.display = 'none';
 
+  document.getElementById('music-bar-wrapper').style.display = 'flex';
   //  ambience elements
   ambienceContainer.innerHTML = `
     <div class="ambience-overlay" style="background-image: url(${gifUrl})"></div>

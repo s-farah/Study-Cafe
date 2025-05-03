@@ -64,7 +64,7 @@
   .go-back-btn:hover {
     background-color: #6b4636;
   }
-  
+
   .ambience-overlay {
     position: absolute;
     top: 0;
@@ -196,7 +196,7 @@
   
   .tab-strip {
     position: fixed;
-    top: 90px;
+    top: 78px;
     left: 0;
     width: 100%;
     padding: 0 240px;

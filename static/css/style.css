@@ -32,7 +32,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  margin-top: 20px;
+  margin-top: -47px;
 }
 
 .window-header {
@@ -174,7 +174,7 @@ body {
 
 .tab-strip {
   position: absolute;
-  top: 84px;
+  top: 87px;
   left: 0;
   width: 100%;
   padding: 0 240px;
@@ -529,14 +529,7 @@ body {
   text-decoration: underline;
 }
 
-/* music bar ignoringg */
-.music-bar {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-}
+
 
 /* layout of flashcard === */
 .flashcards {
