@@ -370,7 +370,6 @@ setFilter.addEventListener('change', () => {
   loadFlashcards();
 });
 
-
 function loadFlashcards() {
   flashcardsContainer.innerHTML = '';
   const selectedSet = setFilter.value;
@@ -382,6 +381,7 @@ function loadFlashcards() {
     groups[card.set].push(card);
   });
 
+  // cycling through
   Object.keys(groups).forEach(setName => {
     const heading = document.createElement('h3');
     heading.textContent = setName;
@@ -404,8 +404,9 @@ function loadFlashcards() {
       back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
       const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = '❌'; // emoji from emojipedia
+      deleteBtn.textContent = '❌'; 
       deleteBtn.className = 'card-delete-btn';
+
       deleteBtn.onclick = (e) => {
         e.stopPropagation();
         flashcards = flashcards.filter(c => c.id !== card.id);
@@ -467,6 +468,7 @@ function SingleCard(card) {
   back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
 
+
   inner.appendChild(front);
   inner.appendChild(back);
   cardEl.appendChild(inner);
@@ -488,10 +490,12 @@ nextBtn.addEventListener('click', () => {
   SingleCard(cards[currentCardIndex]);
 });
 
-
-
-
-loadFlashcards();
+// fixed my issues about the first card (yayayay)
+const cards = getFilteredCards();
+if (cards.length > 0) {
+  currentCardIndex = 0;
+  SingleCard(cards[currentCardIndex]);
+}
 updateFilterOptions();
 
 });
