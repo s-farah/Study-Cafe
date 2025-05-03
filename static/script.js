@@ -371,15 +371,12 @@ flashcardForm.addEventListener('submit', async (e) => {
 
 setFilter.addEventListener('change', loadFlashcards);
 
-<<<<<<< HEAD
 function loadFlashcards() {
-=======
 async function loadFlashcards() {
   const response = await fetch('/flashcards');
   if (!response.ok) return;
   flashcards = await response.json();
 
->>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
   flashcardsContainer.innerHTML = '';
   const selectedSet = setFilter.value;
   const groups = {};
@@ -413,16 +410,13 @@ async function loadFlashcards() {
       back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
       const deleteBtn = document.createElement('button');
-<<<<<<< HEAD
       deleteBtn.textContent = '❌'; 
       deleteBtn.className = 'card-delete-btn';
 
       deleteBtn.onclick = (e) => {
-=======
       deleteBtn.textContent = '❌';
       deleteBtn.className = 'card-delete-btn';
       deleteBtn.onclick = async (e) => {
->>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
         e.stopPropagation();
         await fetch('/flashcards', {
           method: 'DELETE',
@@ -479,11 +473,6 @@ function SingleCard(card) {
   back.className = 'card-back';
   back.innerHTML = `<strong>A:</strong><br>${card.answer}`;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
   inner.appendChild(front);
   inner.appendChild(back);
   cardEl.appendChild(inner);
@@ -502,7 +491,6 @@ nextBtn.addEventListener('click', () => {
   SingleCard(cards[currentCardIndex]);
 });
 
-<<<<<<< HEAD
 // fixed my issues about the first card (yayayay)
 const cards = getFilteredCards();
 if (cards.length > 0) {
@@ -510,10 +498,7 @@ if (cards.length > 0) {
   SingleCard(cards[currentCardIndex]);
 }
 updateFilterOptions();
-=======
 loadFlashcards();
->>>>>>> 141bc9472bfcb0a1809340147efcad1bcb83f676
-
 }); 
 
 //ambience  
