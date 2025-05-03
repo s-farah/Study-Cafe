@@ -6,7 +6,7 @@
   
   body {
     font-family: 'VT323', monospace;
-    background: #113670;
+    background: #061e44;
     overflow: hidden; 
     overflow-y: auto;
     background-image: url('data:image/svg+xml,<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="%23e9cfc7"/></svg>');
@@ -23,8 +23,8 @@
   .window {
     width: 1100px;
     min-height: 600px;
-    background: #9793a0;
-    border: 2px solid #9793a0;
+    background: #ccc6da;
+    border: 2px solid #a8a0bd;
     border-radius: 16px;
     box-shadow: 6px 6px 0 #9793a0;
     display: flex;
@@ -55,14 +55,14 @@
     font-weight: bold;
     border-radius: 8px;
     border: none;
-    background-color: #4a3225;
+    background-color: #0e093d;
     color: white;
     cursor: pointer;
     transition: background 0.3s ease;
   }
   
   .go-back-btn:hover {
-    background-color: #6b4636;
+    background-color: #798db1;
   }
   .ambience-overlay {
     position: absolute;
@@ -92,7 +92,7 @@
   
   .home-heading {
     font-size: 48px;
-    color: #226ce0;
+    color: #13305f;
     margin-bottom: 30px;
     text-align: center;
   }
@@ -139,7 +139,7 @@
     padding: 14px 24px;
     border: none;
     border-radius: 10px;
-    background-color: #226ce0;
+    background-color: #13305f;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -154,13 +154,13 @@
   
   /* nav tabs */
   .title-tab {
-    background: #bab7c0;
+    background: #aca1c2;
     border: 2px solid #d0bcd5;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
     font-family: 'VT323', monospace;
     font-size: 24px;
-    color: #7aa6ec;
+    color: #13305f;
     box-shadow: inset -1px -2px 0 #a9a5b0;
     margin-right: auto; 
     min-width: 160px;
@@ -173,13 +173,13 @@
   }
   
   .tab {
-    background: #bab7c0;
+    background: #ccc6da;
     border: 2px solid #868191;
     border-bottom: none;
     border-radius: 10px 10px 0 0;
     font-family: 'VT323', monospace;
     font-size: 24px;
-    color: #7aa6ec;
+    color: #13305f;
     cursor: pointer;
     box-shadow: inset -1px -2px 0 #a9a5b0;
     transition: background 0.2s;
@@ -188,8 +188,8 @@
   }
   
   .tab.active {
-    background: #9793a0;
-    color: #226ce0;
+    background: #8676ac;
+    color: #13305f;
     box-shadow: none;
   } 
   
@@ -241,20 +241,20 @@
     border-radius: 10px;
     font-family: 'Courier New', monospace;
     font-size: 16px;
-    color: #226ce0;
+    color: #13305f;
     resize: none;
   }
   
   .journal-heading {
     text-align: center;
     font-size: 36px; 
-    color: #226ce0; 
+    color: #13305f; 
     margin-bottom: 25px;
   }
   
   .submit-entry {
     margin-top: 20px;
-    background: #226ce0;
+    background: #13305f;
     color: white;
     padding: 10px 25px;
     border: none;
@@ -368,14 +368,14 @@
   #timer {
     font-size: 72px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
     font-family: 'Courier New', monospace;
   }
   
   #session-type {
     font-size: 20px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
   }
   
   .pomodoro-buttons {
@@ -387,7 +387,7 @@
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
-    background-color: #226ce0;
+    background-color: #13305f;
     color: white;
     border: none;
     border-radius: 8px;
@@ -404,11 +404,11 @@
     text-align: center;
     font-size: 36px;
     margin-bottom: 20px;
-    color: #226ce0;
+    color: #13305f;
   }
   
   #toggle-settings-btn {
-    background-color: #226ce0;
+    background-color: #13305f;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -426,7 +426,7 @@
   }
   
   #set-durations-btn {
-    background-color: #226ce0;
+    background-color: #13305f;
     color: white;
     padding: 6px 16px;
     font-size: 14px;
@@ -470,7 +470,7 @@
   .login-panel h3 {
     font-size: 24px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
     margin-bottom: 10px;
   }
   
@@ -493,13 +493,13 @@
   }
   
   .login-input:focus {
-    border-color: #226ce0;
+    border-color: #13305f;
     box-shadow: 0 0 0 2px rgba(74, 50, 37, 0.1);
     outline: none;
   }
   
   .login-btn {
-    background-color: #226ce0;
+    background-color: #13305f;
     color: white;
     border: none;
     padding: 12px 18px;
@@ -526,7 +526,7 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    background: #226ce0;
+    background: #13305f;
     color: white;
     border-radius: 8px 0 0 8px;
     padding: 12px 16px;
@@ -543,7 +543,7 @@
   
   .linkish {
     background: none;
-    color: #226ce0;
+    color: #13305f;
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -678,7 +678,7 @@
   
   #flashcard-form button {
     margin-top: 15px;
-    background-color: #387ae3;
+    background-color: #13305f; 
     color: white;
     border: none;
     padding: 8px 12px;
@@ -694,7 +694,7 @@
     font-family: 'Courier New', monospace;
     font-size: 16px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
     cursor: pointer;
     background-color: white;
   
@@ -712,7 +712,7 @@
     font-family: 'Courier New', monospace;
     font-size: 16px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
     cursor: pointer;
   }
   
@@ -728,7 +728,7 @@
     font-family: 'Courier New', monospace;
     font-size: 16px;
     font-weight: bold;
-    color: #226ce0;
+    color: #13305f;
     cursor: pointer;
     background-color: white;
   }
@@ -738,6 +738,6 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #226ce0;
+    color: #13305f;
   }
   
