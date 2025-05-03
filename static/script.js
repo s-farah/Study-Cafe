@@ -371,7 +371,11 @@ flashcardForm.addEventListener('submit', async (e) => {
 
 setFilter.addEventListener('change', loadFlashcards);
 
-function loadFlashcards() {
+async function loadFlashcards() {
+  const response = await fetch('/flashcards');
+  if (!response.ok) return;
+  flashcards = await response.json();
+
   flashcardsContainer.innerHTML = '';
   const selectedSet = setFilter.value;
   const groups = {};
@@ -446,7 +450,7 @@ function updateFilterOptions() {
 
 function getFilteredCards() {
   const selectedSet = setFilter.value;
-  return flashcards.filter(card => selectedSet === 'all' || card.set_name === selectedSet);
+  return flashcards.filter(card => selectedSet === 'all' || card.set === selectedSet);
 }
 
 function SingleCard(card) {
