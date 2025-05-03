@@ -31,8 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
-  margin-top: -47px;
+  position: absolute;
 }
 
 .window-header {
@@ -174,7 +173,7 @@ body {
 
 .tab-strip {
   position: absolute;
-  top: 87px;
+  top: 100px;
   left: 0;
   width: 100%;
   padding: 0 240px;
@@ -186,7 +185,7 @@ body {
 }
 
 .window-wrapper {
-  margin-top: 70px;
+  margin-top: -551px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -196,7 +196,7 @@
   } 
   
   .tab-strip {
-    position: fixed;
+    position: absolute;
     top: 78px;
     left: 0;
     width: 100%;
